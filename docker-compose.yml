@@ -1,0 +1,10 @@
+version: '3.8'                            # docker-compose 파일 버전
+
+services:                                 # 서비스들 선언
+  mysql:                                  # 서비스명 선언
+    container_name: mysql_local
+    image: mysql:8.0.30
+    volumes:                              # {호스트}:{컨테이너}
+      - ():/etc/mysql/conf.d              # MySQL 설정 파일
+      - ():/docker-entrypoint-initdb.d    # sh, sql을 파일명 알파벳순으로 수행. 테이블 create, insert 쿼리 파일이 있음
+    restart: always
